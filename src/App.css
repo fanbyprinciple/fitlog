@@ -1,0 +1,29 @@
+/* fitlog — boot styles. Final tokens come from /impeccable shape in P0.5. */
+
+.boot {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #0b0d0c;
+  color: #e7e9e7;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+
+.boot h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #c4ff00;
+}
+
+.boot p {
+  margin: 0;
+  opacity: 0.6;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
