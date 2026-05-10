@@ -26,6 +26,8 @@ export function Settings() {
   const { doc: userDoc } = useUserDoc()
   const unit = useSettingsStore((s) => s.unit)
   const setUnit = useSettingsStore((s) => s.setUnit)
+  const theme = useSettingsStore((s) => s.theme)
+  const setTheme = useSettingsStore((s) => s.setTheme)
   const [signingOut, setSigningOut] = useState(false)
   const [exporting, setExporting] = useState(false)
   const [importing, setImporting] = useState(false)
@@ -168,6 +170,29 @@ export function Settings() {
               onClick={() => setWeeklyGoal(n)}
             >
               {n}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="settings__row">
+        <div className="settings__row-main">
+          <p className="settings__label">theme</p>
+          <p className="settings__value settings__value--mute">
+            dark · light · system
+          </p>
+        </div>
+        <div className="settings__seg" role="tablist" aria-label="theme">
+          {(['dark', 'light', 'auto'] as const).map((t) => (
+            <button
+              key={t}
+              type="button"
+              role="tab"
+              aria-selected={theme === t}
+              className={`settings__seg-btn ${theme === t ? 'is-active' : ''}`}
+              onClick={() => setTheme(t)}
+            >
+              {t}
             </button>
           ))}
         </div>
