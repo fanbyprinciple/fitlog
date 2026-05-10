@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { History } from './pages/History'
 import { Analytics } from './pages/Analytics'
 import { Settings } from './pages/Settings'
+import { Exercises } from './pages/Exercises'
 import { NotFound } from './pages/NotFound'
 
 // HashRouter — GH Pages serves static files only; hash routing
@@ -17,6 +18,7 @@ export const router = createHashRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'workouts', element: <History /> },
+      { path: 'exercises', element: <Exercises /> },
       { path: 'analytics', element: <Analytics /> },
       { path: 'settings', element: <Settings /> },
     ],
