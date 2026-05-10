@@ -3,7 +3,6 @@ import { AppShell } from './components/AppShell'
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
 import { History } from './pages/History'
-import { Analytics } from './pages/Analytics'
 import { Settings } from './pages/Settings'
 import { Exercises } from './pages/Exercises'
 import { Routines } from './pages/Routines'
@@ -11,8 +10,8 @@ import { RoutineEdit } from './pages/RoutineEdit'
 import { Logger } from './pages/Logger'
 import { NotFound } from './pages/NotFound'
 
-// HashRouter — GH Pages serves static files only; hash routing
-// avoids needing a 404.html SPA fallback.
+// Analytics owns recharts (~150KB). React Router 7 native lazy field
+// splits it into its own chunk without React.lazy/Suspense gymnastics.
 export const router = createHashRouter([
   { path: '/login', element: <Login /> },
   {
@@ -25,7 +24,13 @@ export const router = createHashRouter([
       { path: 'history', element: <History /> },
       { path: 'exercises', element: <Exercises /> },
       { path: 'logger', element: <Logger /> },
-      { path: 'analytics', element: <Analytics /> },
+      {
+        path: 'analytics',
+        lazy: async () => {
+          const m = await import('./pages/Analytics')
+          return { Component: m.Analytics }
+        },
+      },
       { path: 'settings', element: <Settings /> },
     ],
   },

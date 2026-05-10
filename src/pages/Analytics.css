@@ -1,0 +1,116 @@
+.analytics {
+  gap: var(--s-5);
+}
+
+.analytics__totals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-2);
+}
+
+.analytics__stat {
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.analytics__stat-kicker {
+  margin: 0;
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.analytics__stat-value {
+  margin: 0;
+  font-size: var(--t-lg);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.analytics__stat-unit {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+
+.analytics__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+}
+
+.analytics__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.analytics__card-title {
+  margin: 0;
+  font-size: var(--t-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.analytics__card-sub {
+  margin: -8px 0 0;
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+}
+
+.analytics__select {
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--t-sm);
+  max-width: 60%;
+}
+
+.analytics__pr {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--accent-mute);
+  color: var(--accent);
+}
+
+.analytics__pr-title {
+  margin: 0;
+  font-size: var(--t-md);
+  font-weight: 600;
+}
+
+.analytics__pr-meta {
+  margin: 2px 0 0;
+  font-size: var(--t-xs);
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.chart-empty {
+  padding: var(--s-6) var(--s-4);
+  text-align: center;
+  color: var(--text-dim);
+  font-size: var(--t-sm);
+}
