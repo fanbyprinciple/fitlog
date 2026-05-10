@@ -8,6 +8,7 @@ import { Exercises } from './pages/Exercises'
 import { Routines } from './pages/Routines'
 import { RoutineEdit } from './pages/RoutineEdit'
 import { Logger } from './pages/Logger'
+import { Achievements } from './pages/Achievements'
 import { NotFound } from './pages/NotFound'
 
 // Analytics owns recharts (~150KB). React Router 7 native lazy field
@@ -31,6 +32,7 @@ export const router = createHashRouter([
           return { Component: m.Analytics }
         },
       },
+      { path: 'achievements', element: <Achievements /> },
       { path: 'settings', element: <Settings /> },
     ],
   },

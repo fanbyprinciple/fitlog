@@ -13,7 +13,14 @@ import { daysSinceLastWorkout } from '../lib/streak'
 import './Page.css'
 import './Home.css'
 
-type Flash = { workoutId: string; prCount: number }
+import type { AchievementKind } from '../lib/achievements'
+import { ACHIEVEMENTS } from '../lib/achievements'
+
+type Flash = {
+  workoutId: string
+  prCount: number
+  newAchievements?: AchievementKind[]
+}
 
 export function Home() {
   const user = useAuthStore((s) => s.user)
@@ -90,6 +97,11 @@ export function Home() {
             workout saved
             {flash.prCount > 0
               ? ` · ${flash.prCount} new PR${flash.prCount === 1 ? '' : 's'}`
+              : ''}
+            {flash.newAchievements && flash.newAchievements.length > 0
+              ? ` · unlocked ${flash.newAchievements
+                  .map((k) => ACHIEVEMENTS.find((a) => a.kind === k)?.title ?? k)
+                  .join(', ')}`
               : ''}
           </span>
         </div>

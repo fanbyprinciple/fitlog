@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import {
+  collection,
   doc,
   getDoc,
+  getDocs,
   limit,
   onSnapshot,
   orderBy,
@@ -22,6 +24,10 @@ import {
   type SimplePR,
 } from '../lib/pr'
 import { bumpStreak, type StreakState } from '../lib/streak'
+import {
+  detectAchievements,
+  type AchievementKind,
+} from '../lib/achievements'
 import type { ActiveWorkout } from '../state/useActiveWorkoutStore'
 import { fromKg, roundForUnit, type Unit } from '../lib/units'
 
@@ -60,6 +66,7 @@ export type SavedWorkout = {
 export type FinishResult = {
   workoutId: string
   prCount: number
+  newAchievements: AchievementKind[]
 }
 
 export async function finishWorkout(
@@ -147,6 +154,12 @@ export async function finishWorkout(
   const userSnap = await getDoc(userRef)
   const userData = userSnap.exists() ? userSnap.data() : {}
 
+  // Read existing achievements so we don't double-fire flash on a kind
+  // already unlocked. Cheap — typically <15 docs.
+  const achSnap = await getDocs(collection(db, 'users', uid, 'achievements'))
+  const alreadyUnlocked = new Set<AchievementKind>()
+  achSnap.forEach((d) => alreadyUnlocked.add(d.id as AchievementKind))
+
   const batch = writeBatch(db)
   batch.set(workoutDoc(uid, saved.id), saved)
 
@@ -166,21 +179,39 @@ export async function finishWorkout(
     lastWorkoutAt: (userData.lastWorkoutAt as number | null) ?? null,
   }
   const streakNext = bumpStreak(streakPrev, new Date(endedAt))
+  const nextTotalWorkouts = ((userData.totalWorkouts as number) ?? 0) + 1
+  const nextTotalVolumeKg =
+    ((userData.totalVolumeKg as number) ?? 0) + totalVolKg
+
   batch.set(
     userRef,
     {
       streakCount: streakNext.count,
       longestStreak: streakNext.longest,
       lastWorkoutAt: streakNext.lastWorkoutAt,
-      totalWorkouts: ((userData.totalWorkouts as number) ?? 0) + 1,
-      totalVolumeKg:
-        ((userData.totalVolumeKg as number) ?? 0) + totalVolKg,
+      totalWorkouts: nextTotalWorkouts,
+      totalVolumeKg: nextTotalVolumeKg,
     },
     { merge: true },
   )
 
+  const newAchievements = detectAchievements({
+    totalWorkouts: nextTotalWorkouts,
+    totalVolumeKg: nextTotalVolumeKg,
+    streakCount: streakNext.count,
+    newPRsThisWorkout: prCount,
+    alreadyUnlocked,
+  })
+
+  for (const kind of newAchievements) {
+    batch.set(doc(db, 'users', uid, 'achievements', kind), {
+      unlockedAt: endedAt,
+      kind,
+    })
+  }
+
   await batch.commit()
-  return { workoutId: saved.id, prCount }
+  return { workoutId: saved.id, prCount, newAchievements }
 }
 
 export function useRecentWorkouts(max = 20) {

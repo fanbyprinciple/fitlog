@@ -1,11 +1,42 @@
 .settings__row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--s-3);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   background: var(--bg-elev-1);
   padding: var(--s-4) var(--s-5);
+  color: var(--text);
+}
+
+.settings__row--link {
+  cursor: pointer;
+  transition: border-color 140ms;
+}
+
+.settings__row--link:hover {
+  border-color: var(--accent);
+}
+
+.settings__row-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: var(--accent-mute);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.settings__row-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings__row-chevron {
+  color: var(--text-dim);
+  flex-shrink: 0;
 }
 
 .settings__label {
