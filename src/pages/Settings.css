@@ -55,6 +55,85 @@
 
 .settings__value--mute {
   color: var(--text-mute);
+  font-size: var(--t-xs);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.settings__seg {
+  display: flex;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.settings__seg-btn {
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  font-size: var(--t-sm);
+  color: var(--text-dim);
+  transition: background 140ms, color 140ms;
+  font-variant-numeric: tabular-nums;
+}
+
+.settings__seg-btn.is-active {
+  background: var(--accent);
+  color: oklch(0.18 0.01 150);
+  font-weight: 700;
+}
+
+.settings__data {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.settings__data-kicker {
+  margin: 0;
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.settings__data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2);
+}
+
+.settings__data-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+  color: var(--text);
+  font-size: var(--t-sm);
+  transition: border-color 140ms, color 140ms;
+}
+
+.settings__data-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.settings__data-btn:disabled {
+  opacity: 0.5;
+}
+
+.settings__msg {
+  margin: 0;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--accent-mute);
+  color: var(--accent);
+  font-size: var(--t-xs);
 }
 
 .settings__signout {
@@ -70,6 +149,24 @@
 }
 
 .settings__signout:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.settings__delete {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-5);
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  font-size: var(--t-xs);
+  letter-spacing: 0.04em;
+}
+
+.settings__delete:hover:not(:disabled) {
   color: var(--danger);
   border-color: var(--danger);
 }

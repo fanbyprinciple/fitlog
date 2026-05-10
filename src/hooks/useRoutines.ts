@@ -7,7 +7,6 @@ import {
   orderBy,
   query,
   serverTimestamp,
-  setDoc,
   updateDoc,
   writeBatch,
 } from 'firebase/firestore'
@@ -151,9 +150,6 @@ export async function maybeSeedRoutines(
     })
   })
 
-  // Use single setDoc fallback if Firestore batch errors out — but
-  // writeBatch shouldn't reject for legal docs.
-  void setDoc
   await batch.commit()
   return true
 }
