@@ -6,6 +6,8 @@ import { History } from './pages/History'
 import { Analytics } from './pages/Analytics'
 import { Settings } from './pages/Settings'
 import { Exercises } from './pages/Exercises'
+import { Routines } from './pages/Routines'
+import { RoutineEdit } from './pages/RoutineEdit'
 import { Logger } from './pages/Logger'
 import { NotFound } from './pages/NotFound'
 
@@ -18,7 +20,9 @@ export const router = createHashRouter([
     element: <AppShell />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'workouts', element: <History /> },
+      { path: 'workouts', element: <Routines /> },
+      { path: 'routines/:id', element: <RoutineEdit /> },
+      { path: 'history', element: <History /> },
       { path: 'exercises', element: <Exercises /> },
       { path: 'logger', element: <Logger /> },
       { path: 'analytics', element: <Analytics /> },

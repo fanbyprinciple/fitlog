@@ -1,0 +1,230 @@
+.routine-edit {
+  gap: var(--s-4);
+}
+
+.routine-edit__head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.routine-edit__back,
+.routine-edit__save {
+  flex-shrink: 0;
+}
+
+.routine-edit__back {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  color: var(--text-mute);
+}
+
+.routine-edit__back:hover {
+  background: var(--bg-elev-1);
+  color: var(--text);
+}
+
+.routine-edit__name {
+  flex: 1;
+  font-size: var(--t-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  padding: var(--s-2);
+  border-bottom: 1px solid transparent;
+}
+
+.routine-edit__name:focus {
+  outline: 0;
+  border-bottom-color: var(--accent);
+}
+
+.routine-edit__save {
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: oklch(0.18 0.01 150);
+  font-weight: 700;
+  font-size: var(--t-sm);
+}
+
+.routine-edit__save:disabled {
+  opacity: 0.4;
+}
+
+.routine-edit__folder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+}
+
+.routine-edit__folder-label {
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.routine-edit__folder select {
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.routine-edit__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.re-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+}
+
+.re-row__handle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.re-row__handle-btn {
+  width: 28px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  color: var(--text-dim);
+}
+
+.re-row__handle-btn:hover:not(:disabled) {
+  background: var(--bg-elev-2);
+  color: var(--text);
+}
+
+.re-row__handle-btn:disabled {
+  opacity: 0.3;
+}
+
+.re-row__main {
+  min-width: 0;
+}
+
+.re-row__name {
+  margin: 0;
+  font-size: var(--t-sm);
+  color: var(--text);
+}
+
+.re-row__meta {
+  margin: 0;
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+  text-transform: lowercase;
+}
+
+.re-row__field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
+.re-row__field span {
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.re-row__field input {
+  width: 56px;
+  padding: 6px;
+  text-align: center;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.re-row__remove {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  color: var(--text-dim);
+}
+
+.re-row__remove:hover {
+  color: var(--danger);
+  background: var(--bg-elev-2);
+}
+
+.routine-edit__add {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border-radius: var(--r-lg);
+  border: 1px dashed var(--border);
+  color: var(--text-mute);
+  font-size: var(--t-md);
+  transition: border-color 140ms, color 140ms;
+}
+
+.routine-edit__add:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .re-row {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'handle main remove'
+      'handle fields fields';
+    gap: var(--s-2);
+  }
+  .re-row__handle {
+    grid-area: handle;
+  }
+  .re-row__main {
+    grid-area: main;
+  }
+  .re-row__remove {
+    grid-area: remove;
+  }
+  .re-row > .re-row__field:nth-of-type(1),
+  .re-row > .re-row__field:nth-of-type(2) {
+    grid-area: fields;
+    flex-direction: row;
+    gap: var(--s-2);
+  }
+  .re-row > .re-row__field:nth-of-type(2) {
+    grid-area: unset;
+  }
+}
