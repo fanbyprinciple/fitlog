@@ -1,0 +1,132 @@
+.home__flash {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--accent-mute);
+  color: var(--accent);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  animation: home-flash-in 280ms var(--ease-out-quart);
+}
+
+@keyframes home-flash-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home__start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--accent);
+  color: oklch(0.18 0.01 150);
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  transition: transform 140ms var(--ease-out-quart);
+}
+
+.home__start:active {
+  transform: scale(0.98);
+}
+
+.home__resume {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-lg);
+  background: var(--accent-mute);
+  color: var(--text);
+}
+
+.home__resume-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.home__resume-title {
+  margin: 0;
+  font-size: var(--t-md);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.home__resume-sub {
+  margin: 2px 0 0;
+  font-size: var(--t-sm);
+  color: var(--text-mute);
+}
+
+.home__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+.home__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+}
+
+.home__card--placeholder {
+  border-style: dashed;
+}
+
+.home__card-kicker {
+  margin: 0;
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.home__card-value {
+  margin: 0;
+  font-size: var(--t-2xl);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.home__card-meta {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+}

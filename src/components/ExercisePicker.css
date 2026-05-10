@@ -1,0 +1,68 @@
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.picker__search {
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--t-md);
+  width: 100%;
+}
+
+.picker__search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.picker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.picker__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.picker__row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  text-align: left;
+  transition: background 100ms;
+}
+
+.picker__row:hover {
+  background: var(--accent-mute);
+}
+
+.picker__row-name {
+  font-size: var(--t-md);
+  color: var(--text);
+}
+
+.picker__row-meta {
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+}
+
+.picker__empty {
+  margin: var(--s-6) 0;
+  text-align: center;
+  color: var(--text-mute);
+}

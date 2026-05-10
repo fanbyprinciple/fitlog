@@ -1,0 +1,66 @@
+.rest-timer {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0 calc(-1 * var(--s-5)) var(--s-5);
+  padding: var(--s-3) var(--s-5);
+  background: var(--accent-mute);
+  border-bottom: 1px solid var(--accent);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.rest-timer.is-overrun {
+  background: oklch(0.80 0.15 70 / 0.18);
+  border-bottom-color: var(--warn);
+}
+
+.rest-timer__label {
+  margin: 0;
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.rest-timer.is-overrun .rest-timer__label {
+  color: var(--warn);
+}
+
+.rest-timer__time {
+  margin: 0;
+  font-size: var(--t-2xl);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  text-align: center;
+}
+
+.rest-timer.is-overrun .rest-timer__time {
+  color: var(--warn);
+}
+
+.rest-timer__controls {
+  display: flex;
+  gap: var(--s-2);
+}
+
+.rest-timer__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px var(--s-3);
+  border-radius: var(--r-pill);
+  background: var(--bg-elev-1);
+  color: var(--text);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.rest-timer__btn--ghost {
+  background: transparent;
+  color: var(--text-mute);
+}
