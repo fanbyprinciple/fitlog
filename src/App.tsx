@@ -1,12 +1,10 @@
-import './App.css'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
+import { useAuthBootstrap } from './hooks/useAuth'
 
 function App() {
-  return (
-    <main className="boot">
-      <h1>fitlog</h1>
-      <p>solo workout tracker — scaffold</p>
-    </main>
-  )
+  useAuthBootstrap()
+  return <RouterProvider router={router} />
 }
 
 export default App

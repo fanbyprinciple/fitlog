@@ -1,0 +1,28 @@
+.not-found {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: var(--s-12) var(--s-4);
+}
+
+.not-found__code {
+  margin: 0;
+  font-size: var(--t-3xl);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.not-found__msg {
+  margin: 0;
+  color: var(--text-mute);
+}
+
+.not-found__home {
+  margin-top: var(--s-4);
+  color: var(--accent);
+  font-size: var(--t-sm);
+}

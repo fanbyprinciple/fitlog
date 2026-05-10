@@ -1,0 +1,70 @@
+/* fitlog design tokens — see DESIGN.md for full system */
+
+:root {
+  /* color — dark default */
+  --bg: oklch(0.16 0.005 150);
+  --bg-elev-1: oklch(0.20 0.006 150);
+  --bg-elev-2: oklch(0.24 0.007 150);
+  --text: oklch(0.94 0.005 150);
+  --text-mute: oklch(0.68 0.008 150);
+  --text-dim: oklch(0.52 0.008 150);
+  --border: oklch(0.30 0.008 150);
+  --accent: oklch(0.86 0.20 130);
+  --accent-mute: oklch(0.86 0.20 130 / 0.12);
+  --accent-strong: oklch(0.78 0.18 130);
+  --ok: oklch(0.78 0.16 145);
+  --warn: oklch(0.80 0.15 70);
+  --danger: oklch(0.65 0.20 25);
+
+  /* type */
+  --sans:
+    -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', 'Segoe UI',
+    Roboto, 'Helvetica Neue', sans-serif;
+  --mono:
+    ui-monospace, 'SF Mono', 'Cascadia Mono', 'JetBrains Mono', monospace;
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-md: 1rem;
+  --t-lg: 1.125rem;
+  --t-xl: 1.5rem;
+  --t-2xl: 2.25rem;
+  --t-3xl: 3.5rem;
+
+  /* spacing — 4px grid */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+
+  /* shape */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* motion */
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-theme='light'] {
+  --bg: oklch(0.99 0.003 150);
+  --bg-elev-1: oklch(0.97 0.004 150);
+  --bg-elev-2: oklch(0.95 0.005 150);
+  --text: oklch(0.20 0.008 150);
+  --text-mute: oklch(0.42 0.008 150);
+  --text-dim: oklch(0.58 0.008 150);
+  --border: oklch(0.88 0.005 150);
+  --accent: oklch(0.72 0.15 130);
+  --accent-mute: oklch(0.72 0.15 130 / 0.14);
+  --accent-strong: oklch(0.64 0.16 130);
+  --ok: oklch(0.62 0.14 145);
+  --warn: oklch(0.68 0.14 70);
+  --danger: oklch(0.55 0.18 25);
+}

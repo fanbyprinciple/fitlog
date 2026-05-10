@@ -1,4 +1,4 @@
-/* fitlog — minimal reset. Final design tokens come from /impeccable shape. */
+@import './styles/tokens.css';
 
 *,
 *::before,
@@ -11,18 +11,61 @@ body,
 #root {
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body {
-  background: #0b0d0c;
-  color: #e7e9e7;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: var(--t-md);
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 button {
   font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* numbers don't dance during edits */
+.tnum,
+input[inputmode='numeric'],
+input[inputmode='decimal'] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
 }
