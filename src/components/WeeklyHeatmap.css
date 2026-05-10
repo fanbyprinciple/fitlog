@@ -1,0 +1,49 @@
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--s-2);
+}
+
+.heatmap__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: var(--s-2) 0;
+  border-radius: var(--r-md);
+  background: var(--bg);
+  border: 1px solid transparent;
+  transition: border-color 140ms;
+}
+
+.heatmap__day.is-today {
+  border-color: var(--border);
+}
+
+.heatmap__letter {
+  font-size: var(--t-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.heatmap__day.is-today .heatmap__letter {
+  color: var(--text);
+}
+
+.heatmap__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-pill);
+  background: var(--bg-elev-2);
+  transition: background 200ms var(--ease-out-quart);
+}
+
+.heatmap__day.is-hit .heatmap__dot {
+  background: var(--accent);
+}
+
+.heatmap__day.is-today.is-hit .heatmap__dot {
+  box-shadow: 0 0 0 3px var(--accent-mute);
+}
